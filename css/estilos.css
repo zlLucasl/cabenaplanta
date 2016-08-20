@@ -1,0 +1,122 @@
+body{
+	font-family: 'Roboto', sans-serif;
+	background-color: #fff;
+}
+#cabecalho{
+	background-color: #F9F900;
+	padding:20px 0;	
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	z-index: 9999;
+}
+#cabecalho .container {
+	position: relative;
+}
+#cabecalho ul{
+	margin-top: 25px;
+	font-size: 20px;
+}
+#cabecalho li a{
+    color: inherit;
+}
+#cabecalho li a i{
+    vertical-align: middle;
+}
+#cabecalho li :hover{
+    text-decoration: none;
+}
+#cabecalho .form-login {
+	position: absolute;
+	top: 102px;
+	right: 0;
+	background: #f9f900;
+	padding: 20px;
+	border-radius: 0 0 6px 6px;
+	opacity: 0;
+	transition: all 0.5s;
+}
+#cabecalho .form-login.ativo {
+	opacity: 1;
+}
+#cabecalho.cabecalho-lateral {
+	position: fixed;
+	left: 0;
+	top: ´0;
+}
+#cabecalho .img-perfil {
+	border: 2px solid #000;
+}
+#cabecalho .nome-perfil {
+	text-align: center;
+	color: #000;
+	text-transform: uppercase;
+	font-size: 18px;
+}
+#cabecalho .menu-vertical {
+	list-style: none;
+	padding: 20px 0;
+}
+#cabecalho .menu-vertical a {
+	padding: 0 20px;
+	line-height: 40px;
+	display: block;
+	transition: all 0.3s;
+}
+#cabecalho .menu-vertical a:hover {
+	background: #000;
+	color: #f9f900;
+}
+.titulo_cont{
+	margin-top: 100px;
+	text-align: center;
+	font-weight: 900;
+	color: #000;
+}
+.titulo_cont h2{
+	margin-top:0;
+}
+.rodape{
+	margin: 150px 0 0 0;
+	background-color: #F9F900;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.icon-home {
+	border: 1px solid #333;
+	border-radius: 100%;
+	padding-bottom: 100%;
+	text-align: center;
+	position: relative;
+	margin-top: 60px;
+}
+.icon-home a {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	transform:translate(-50%,-50%);
+	color: inherit;
+}
+
+/* TELA INTERNA */
+.filtro-box {
+	background: #eee;
+	padding-bottom: 20px;
+}
+.item-lista {
+	border-bottom: 1px solid #000;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.item-lista img {
+	border: 2px solid #000;
+	border-radius: 100%;
+	width: 100px;
+	height: auto;
+	margin-right: 20px;
+}
+.etiqueta{
+	margin-left: 700px;
+}
+.lbl{
+	font-size: 30px;
+}
