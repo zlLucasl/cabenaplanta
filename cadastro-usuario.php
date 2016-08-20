@@ -1,6 +1,6 @@
 <?php
 
-	$conexao = mysqli_connect('mysql.hostinger.com.br', 'u931999602_user1', 'amazonas1', 'u931999602_cnp');
+	$conexao = mysqli_connect('localhost', 'root', '', 'cabe_planta');
 
 if(isset($_POST["entrar"])){
 	$login=$_POST["email"];
@@ -150,7 +150,7 @@ function Onlychars(e)
 					</div>
 					<div class="form-group">
 						<label>Telefone</label>
-						<input type="numeric" name="numero" class="form-control" id="telefone" placeholder="(31)99999-9999" onfocus="if (this.value=='(31)99999-9999') this.value='';" onblur="if (this.value=='') this.value='(31)99999-9999'">
+						<input type="numeric" name="numero" class="form-control" id="telefone" value="(31)99999-9999" onfocus="if (this.value=='(31)99999-9999') this.value='';" onblur="if (this.value=='') this.value='(31)99999-9999'">
 					</div>
 					<div class="form-group">
 						<label>Data de nascimento</label>

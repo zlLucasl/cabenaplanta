@@ -12,10 +12,10 @@ class Banco{
 	}
 	private function Conectar(){
 		
-		$this->host = "mysql.hostinger.com.br";
-		$this->user = "u931999602_user1";
-		$this->password = "amazonas1";
-		$this->database = "u931999602_cnp";
+		$this->host = "localhost";
+		$this->user = "root";
+		$this->password = "";
+		$this->database = "cabe_planta";
 		$this->conexao_bd = mysqli_connect($this->host, $this->user, $this->password, $this->database);
 		
 		if(!$this->conexao_bd)

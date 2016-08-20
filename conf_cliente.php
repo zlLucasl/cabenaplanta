@@ -8,7 +8,7 @@ if(isset($_POST['cadastrar'])){
 	if($_POST['nome'] !="" && $_POST['email'] !="" && $_POST['senha'] !=""&& $_POST['senha2'] !=""  && $_POST["sexo"] !="" && $_POST["nascimento"] !="" && $_POST['numero'] !="" && $_POST['senha'] == $_POST['senha2']){
 		
 		
-	$conexao = mysqli_connect('mysql.hostinger.com.br', 'u931999602_user1', 'amazonas1', 'u931999602_cnp');
+	$conexao = mysqli_connect('localhost', 'root', '', 'cabe_planta');
 		
 		$nome = $_POST["nome"];
 		$sexo = $_POST["sexo"];
@@ -35,7 +35,7 @@ if(isset($_POST['cadastrar'])){
 				$dados = mysqli_query($conexao, $sql);
 				$linha = mysqli_fetch_assoc($dados);
 
-				$sql = "insert into cliente(id, usuario_id, nome, sexo, nascimento) values(null, '".$linha['id']."', '".$nome."', '".$sexo."', '".$nascimento."')";
+				$sql = "insert into cliente(id, usuario_id, sexo, nascimento) values(null, '".$linha['id']."', '".$sexo."', '".$nascimento."')";
 				$dados = mysqli_query($conexao, $sql);
 
 				$sql = "insert into telefone(id, numero, usuario_id) values(null, '".$numero."', '".$linha['id']."')";
@@ -52,7 +52,7 @@ if(isset($_POST['cadastrar'])){
 
 <?php
 
-$conexao = mysqli_connect('localhost', 'root', '', 'cabe_planta');
+	$conexao = mysqli_connect('localhost', 'root', '', 'cabe_planta');
 
 if(isset($_POST["entrar"])){
 	$login=$_POST["email"];
@@ -143,7 +143,7 @@ if(isset($_POST["entrar"])){
 	
 	<script>
 		jQuery(function($){
-		       $("#telefone").mask("(99) 99999-9999");
+		       $("#telefone").mask("(99) 99999-999?9");
 		});
 	</script>
 	
@@ -166,6 +166,11 @@ if(isset($_POST["entrar"])){
 			$(".abrir-login").click(function(){
 				$(".form-login").toggleClass("ativo");
 			});
+		});
+		
+		
+		jQuery(function($){
+		       $("#telefone").mask("(99) 99999-9999");
 		});
 	</script>
 </body>

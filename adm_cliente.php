@@ -8,7 +8,7 @@ if(isset($_POST['cadastrar'])){
 	if($_POST['nome'] !="" && $_POST['email'] !="" && $_POST['senha'] !=""&& $_POST['senha2'] !=""  && $_POST["sexo"] !="" && $_POST["nascimento"] !="" && $_POST['numero'] !="" && $_POST['senha'] == $_POST['senha2']){
 		
 		
-	$conexao = mysqli_connect('mysql.hostinger.com.br', 'u931999602_user1', 'amazonas1', 'u931999602_cnp');
+	$conexao = mysqli_connect('localhost', 'root', '', 'cabe_planta');
 
 			$nome = $_POST["nome"];
 			$sexo = $_POST["sexo"];
@@ -36,7 +36,7 @@ $sql = "SELECT (id) FROM usuario WHERE email = '".$email."'";
 $dados = mysqli_query($conexao, $sql);
 $linha = mysqli_fetch_assoc($dados);
 
-$sql = "insert into cliente(id, usuario_id, nome, sexo, nascimento) values(null, '".$linha['id']."', '".$nome."', '".$sexo."', '".$nascimento."')";
+$sql = "insert into cliente(id, usuario_id, sexo, nascimento) values(null, '".$linha['id']."', '".$sexo."', '".$nascimento."')";
 $dados = mysqli_query($conexao, $sql);
 
 $sql = "insert into telefone(id, numero, usuario_id) values(null, '".$numero."', '".$linha['id']."')";
@@ -57,7 +57,7 @@ if(!isset($_SESSION['usuario'])){
 	header("Location: index.php");
 }
 else{
-	$conexao = mysqli_connect('mysql.hostinger.com.br', 'u931999602_user1', 'amazonas1', 'u931999602_cnp');
+	$conexao = mysqli_connect('localhost', 'root', '', 'cabe_planta');
 	
 	
 		$sql = "select * from usuario where email = '".$_SESSION['usuario']."'";
@@ -72,7 +72,22 @@ else{
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link href="css/estilos.css" rel="stylesheet" type="text/css">	
+	
+	<link rel="stylesheet" type="text/css" media="screen and (min-width: 0px)" href="css/small.css"/>
+	<link rel="stylesheet" type="text/css" media="screen and (min-width: 1250px)" href="css/estilos.css"/>
+	
+	<script>
+    function slidetoggle() {
+      var slider = document.getElementById("nav-slide");
+      slider.style.height = window.innerHeight - 60 + "px";
+      if(slider.style.left == "0px") {
+        slider.style.left = "-600px";
+      }
+      else {
+        slider.style.left = "0px";
+      }
+    }
+  </script>
 	
 		<script type="text/javascript" async="" src="./mask_files/ga.js"></script><script src="./mask_files/jquery-1.5.2.min.js"></script><style type="text/css"></style>
 		<script src="./mask_files/jquery.maskedinput-1.3.min.js"></script>
@@ -116,14 +131,27 @@ function Onlychars(e)
 </script>
 </head>
 <body>
-	<div class="container-fluid">
-		<div class="row">
-			<header id="cabecalho" class="col-md-3 cabecalho-lateral">
+
+<div class="cabeca">
+		<a>
+			<img src="images/logo.jpg" href="index.php">
+		</a>
+	</div>
+
+
+<nav id="nav-btn" onclick="slidetoggle()">
+  <div></div>
+  <div></div>
+  <div></div>
+</nav>
+
+<section id="nav-slide">
+			<div>
 				<a href="adm.php">
 					<img class="img-circle center-block img-responsive img-perfil" src="images/perfil.jpg">
-					<h1 class="nome-perfil"><?php echo $linha['nome_usuario'];?></h1>
+					<h1 class="nome-perfil2"><?php echo $linha['nome_usuario'];?></h1>
 				</a>
-				<ul class="menu-vertical"> 
+				<ul class="menu-vertical2">
 					<li><a href="adm_cliente.php">Cadastrar Cliente</a></li>
 					<li><a href="adm_prestador.php">Cadastrar Prestador</a></li>
 					<li><a href="adm_loja.php">Cadastrar loja</a></li>
@@ -132,11 +160,8 @@ function Onlychars(e)
 					<li><a href="">Perfil</a></li>
 					<li><a href="index.php">Sair</a></li>
 				</ul>
-			</header>
-                	
 			</div>
-		</div>
-	</div>
+</section>
 	
 	<div class="container">
 		<div class="titulo_cont">		
@@ -195,7 +220,7 @@ function Onlychars(e)
 	
 	<script>
 		jQuery(function($){
-		       $("#telefone").mask("(99) 99999-9999");
+		       $("#telefone").mask("(99) 99999-999?9");
 		});
 	</script>
 	

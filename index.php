@@ -6,7 +6,7 @@
 	session_destroy();
 	
 	
-	$conexao = mysqli_connect('mysql.hostinger.com.br', 'u931999602_user1', 'amazonas1', 'u931999602_cnp');
+	$conexao = mysqli_connect('localhost', 'root', '', 'cabe_planta');
 	
 	//ligin
 	session_start();

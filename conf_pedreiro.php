@@ -7,7 +7,7 @@ $bd = new Banco();
 if(isset($_POST['cadastrar'])){
 	if($_POST['nome'] !="" && $_POST['email'] !="" && $_POST['senha'] !="" && $_POST['senha2'] !=""  && $_POST["sexo"] !="" && $_POST['telefone'] !="" && $_POST['especialidade'] !="" && $_POST['logradouro'] !="" && $_POST['numero'] !="" && $_POST['bairro'] !="" && $_POST['cidade'] !="" && $_POST['uf'] !="" && $_POST['cep'] !="" && $_POST['senha'] == $_POST['senha2']){
 		
-	$conexao = mysqli_connect('mysql.hostinger.com.br', 'u931999602_user1', 'amazonas1', 'u931999602_cnp');
+	$conexao = mysqli_connect('localhost', 'root', '', 'cabe_planta');
 
 		$nome = $_POST["nome"];
 		$sexo = $_POST["sexo"];
@@ -43,7 +43,7 @@ $sql = "SELECT (id) FROM usuario WHERE email = '".$email."'";
 $dados = mysqli_query($conexao, $sql);
 $linha = mysqli_fetch_assoc($dados);
 
-$sql = "insert into pedreiro(id, nome_usuario, usuario_id, especialidade, logradouro, numero, complemento, bairro, cidade, uf, cep) values(null, '".$nome."', '".$linha['id']."', '".$especialidade."', '".$logradouro."', '".$numero."', '".$complemento."', '".$bairro."', '".$cidade."', '".$uf."', '".$cep."')";
+$sql = "INSERT INTO pedreiro(id, usuario_id, especialidade, logradouro, numero, complemento, bairro, cidade, uf, cep) values(null, '".$linha['id']."', '".$especialidade."', '".$logradouro."', '".$numero."', '".$complemento."', '".$bairro."', '".$cidade."', '".$uf."', '".$cep."')";
 $dados = mysqli_query($conexao, $sql);
 
 $sql = "insert into telefone(id, numero, usuario_id) values(null, '".$telefone."', '".$linha['id']."')";
@@ -60,7 +60,7 @@ else{
 
 <?php
 
-	$conexao = mysqli_connect('mysql.hostinger.com.br', 'u931999602_user1', 'amazonas1', 'u931999602_cnp');
+	$conexao = mysqli_connect('localhost', 'root', '', 'cabe_planta');
 
 if(isset($_POST["entrar"])){
 	$login=$_POST["email"];
@@ -174,6 +174,11 @@ if(isset($_POST["entrar"])){
 			$(".abrir-login").click(function(){
 				$(".form-login").toggleClass("ativo");
 			});
+		});
+		
+		
+		jQuery(function($){
+		       $("#telefone").mask("(99) 99999-9999");
 		});
 	</script>
 </body>

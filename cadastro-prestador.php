@@ -1,6 +1,6 @@
 <?php
 
-	$conexao = mysqli_connect('mysql.hostinger.com.br', 'u931999602_user1', 'amazonas1', 'u931999602_cnp');
+	$conexao = mysqli_connect('localhost', 'root', '', 'cabe_planta');
 
 if(isset($_POST["entrar"])){
 	$login=$_POST["email"];
@@ -233,7 +233,7 @@ function Onlychars(e)
 	
 	<script>
 		jQuery(function($){
-		       $("#telefone").mask("(99) 99999-9999");
+		       $("#telefone").mask("(99) 99999-999?9");
 		       $("#cep").mask("99999-999");
 		});
 	</script>

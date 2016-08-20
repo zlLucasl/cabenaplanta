@@ -7,7 +7,7 @@ $bd = new Banco();
 if(isset($_POST['cadastrar'])){
 	if($_POST['nome'] !="" && $_POST['email'] !="" && $_POST['senha'] !="" && $_POST['senha2'] !="" && $_POST['senha'] == $_POST['senha2']){
 		
-		$conexao = mysqli_connect('mysql.hostinger.com.br', 'u931999602_user1', 'amazonas1', 'u931999602_cnp');
+		$conexao = mysqli_connect('localhost', 'root', '', 'cabe_planta');
 
 			$email = $_POST['email'];
 		
@@ -34,7 +34,7 @@ if(isset($_POST['cadastrar'])){
 
 <?php
 
-	$conexao = mysqli_connect('mysql.hostinger.com.br', 'u931999602_user1', 'amazonas1', 'u931999602_cnp');
+	$conexao = mysqli_connect('localhost', 'root', '', 'cabe_planta');
 
 if(isset($_POST["entrar"])){
 	$login=$_POST["email"];
@@ -166,7 +166,7 @@ function Onlychars(e)
 			</div>
 		</form>
 	</div>
-	
+	</div>
 
 	
 	<script>
