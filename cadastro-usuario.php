@@ -1,37 +1,49 @@
 <?php
-
-	$conexao = mysqli_connect('localhost', 'root', '', 'cabe_planta');
-
-if(isset($_POST["entrar"])){
+	//logof
+	session_start();
+	unset($_SESSION["usuario"]);
+	session_destroy();
+	
+	
+	$conexao = mysqli_connect('mysql.hostinger.com.br', 'u931999602_user1', 'amazonas1', 'u931999602_cnp');
+	
+	//ligin
+	session_start();
+	
+	if(isset($_POST["entrar"]) && isset($_POST["email"]) && isset($_POST["senha"])){
 	$login=$_POST["email"];
 	$pwd=$_POST["senha"];
+	
+	
+	$_SESSION["usuario"] = $login;
 	
 		$sql = "select * from usuario where email = '".$login."' and senha = '".$pwd."'";
 		$dados = mysqli_query($conexao, $sql);
 		$linha = mysqli_fetch_assoc($dados);
-		
-		if($login!="" and $pwd!="" and $linha['tipo'] == 2){
-			header('Location:pedreiro.html');
+	
+	if($login!="" and $pwd!="" and $linha['tipo'] == 2){
+			header('Location:pedreiro.php');
 		}
 			elseif($login!="" and $pwd!="" and $linha['tipo'] == 3){
-				header('Location:encontrar-prestador.html');
+				header('Location:encontrar-prestador.php');
 			}
 				elseif($login!="" and $pwd!="" and $linha['tipo'] == 1){
+			
 					
 				}
 					elseif($login!="" and $pwd!="" and $linha['tipo'] == 4){
-						header('Location:adm.html');
+						header('Location:adm.php');
 						
 					}
+						elseif($login!="" and $pwd!="" and $linha['tipo'] == 5){
+							header('Location:super_adm.php');
+						
+						}
+							else{
+								echo "<script type=\"text/javascript\">alert('Usuario ou senha incorreto!');</script>";;
+							}	
 		
-}
-
-if(isset($_GET["msg"])){
-	print "<script type=\"text/javascript\">alert('É obrigatorio preencher todos os campos!');</script>";
-}
-if(isset($_GET["msg2"])){
-	print "<script type=\"text/javascript\">alert('O E-mail fornecido já esta cadastrado!');</script>";
-}
+	}
 
 ?>
 
@@ -150,7 +162,7 @@ function Onlychars(e)
 					</div>
 					<div class="form-group">
 						<label>Telefone</label>
-						<input type="numeric" name="numero" class="form-control" id="telefone" value="(31)99999-9999" onfocus="if (this.value=='(31)99999-9999') this.value='';" onblur="if (this.value=='') this.value='(31)99999-9999'">
+						<input type="numeric" name="numero" class="form-control" id="telefone" placeholder="(31)99999-9999" onfocus="if (this.value=='(31)99999-9999') this.value='';" onblur="if (this.value=='') this.value='(31)99999-9999'">
 					</div>
 					<div class="form-group">
 						<label>Data de nascimento</label>
